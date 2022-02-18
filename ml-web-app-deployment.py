@@ -111,13 +111,13 @@ if menu == 'Housing Calculator':
     if furnishingstatus == 'Unfurnished':
         furnishing_list = [0,0,1]
 
-st.subheader('Output Housing Price')
+    st.subheader('Output Housing Price')
 
-filename = 'model/housing_model3.sav'
-loaded_model = joblib.load(filename)
+    filename = 'model/housing_model3.sav'
+    loaded_model = joblib.load(filename)
 
-prediction = np.round(loaded_model.predict([[area, bedroom, bathroom, storey, parking, is_mainroad, has_guestroom, has_basement, has_heating, has_airconditioning, is_preferred]+  furnishing_list])[0])
+    prediction = np.round(loaded_model.predict([[area, bedroom, bathroom, storey, parking, is_mainroad, has_guestroom, has_basement, has_heating, has_airconditioning, is_preferred]+  furnishing_list])[0])
 
-pricing = locale.format("%d", prediction, grouping=True)
+    pricing = locale.format("%d", prediction, grouping=True)
 
-st.write(f"Predicted Housing Price is: {pricing}")
+    st.write(f"Predicted Housing Price is: {pricing}")
