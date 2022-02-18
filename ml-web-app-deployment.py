@@ -23,7 +23,7 @@ furnishing_list = [0,0,0]
 
 st.title("ML Web Application Deployment")
 
-url = "data/Housing.csv"
+url = "data/housing.csv"
 
 housing_df = pd.read_csv(url)
 
@@ -116,7 +116,6 @@ st.subheader('Output Housing Price')
 filename = 'model/housing_model3.sav'
 loaded_model = joblib.load(filename)
 
-# prediction = np.round(loaded_model.predict([[age, bmi, num_children, is_female, is_smoker] + loc_list])[0])
 prediction = np.round(loaded_model.predict([[area, bedroom, bathroom, storey, parking, is_mainroad, has_guestroom, has_basement, has_heating, has_airconditioning, is_preferred]+  furnishing_list])[0])
 
 pricing = locale.format("%d", prediction, grouping=True)
