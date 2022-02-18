@@ -52,7 +52,7 @@ if region == 'southwest':
     
 st.subheader('Output Insurance Price')
 
-filename = 'model/finalized_model.sav'
+filename = 'data/finalized_model.sav'
 loaded_model = joblib.load(filename)
 
 prediction = np.round(loaded_model.predict([[age, bmi, num_children, is_female, is_smoker] + loc_list])[0])
